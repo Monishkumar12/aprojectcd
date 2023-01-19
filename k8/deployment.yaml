@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: do180
+  name: do180
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: do180
+  template:
+    metadata:
+      labels:
+        app: do180
+    spec:
+      containers:
+        - image: quay.io/monishkumar/mo-ro-do180:latest
+          imagePullPolicy: Always
+          name: do180
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+            - containerPort: 9090
+              protocol: TCP
